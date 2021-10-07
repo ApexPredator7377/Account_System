@@ -7,5 +7,6 @@ import za.ac.nwu.as.domain.service.GeneralResponse;
 @RestController
 public class AccountTypeController
 {
-
+    @GetMapping("/all")
+    public GeneralResponse<String> getAll() { return new GeneralResponse<>(true, "No types found");}
 }
