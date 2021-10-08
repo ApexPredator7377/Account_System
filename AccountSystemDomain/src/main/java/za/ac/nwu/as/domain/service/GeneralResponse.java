@@ -29,4 +29,12 @@ public class GeneralResponse <T> implements Serializable
     @Override
     public int hashCode() {return Objects.hash(successful, payload);
     }
+
+    @Override
+    public String toString(){
+        return "GeneralResponse{" +
+                "successful=" + successful +
+                ", payload=" + payload +
+                '}';
+    }
 }
