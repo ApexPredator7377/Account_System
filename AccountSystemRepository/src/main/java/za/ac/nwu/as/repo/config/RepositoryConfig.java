@@ -24,52 +24,52 @@ import java.sql.SQLException;
 @PropertySource(value = "classpath:application-db.properties")
 public class RepositoryConfig {
 
-    private static final String[] ENTITY_PACKAGES_TO_SCAN = {"za.ac.nwu.as.domain.persistence"};
-    private static final String PERSISTENCE_UNIT_NAME = "account.system.persistence";
-
-    @Value("${spring.datasource.url}")
-    private String datasourseUrl;
-
-    @Value("${spring.datasource.username}")
-    private String username;
-
-    @Value("${spring.datasource.password}")
-    private String password;
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan(ENTITY_PACKAGES_TO_SCAN);
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setJpaProperties(buildJpaProperties());
-        entityManagerFactoryBean.setPersistenceUnitName(PERSISTENCE_UNIT_NAME)
-
-        return entityManagerFactoryBean;
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-
-        return transactionManager;
-    }
-
-    @Bean
-    public DataSource dataSource() {
-        try {
-            OracleDataSource dataSource = new OracleDataSource();
-            dataSource.setUser(username);
-            dataSource.setPassword(password);
-            dataSource.setURL(datasourseUrl);
-            dataSource.setImplicitCachingEnabled(true);
-            return dataSource;
-        } catch (SQLException e){
-            //TODO: Log out that Repository Configured
-            throw new RuntimeException("Unable to connect to the DB", e);
-        }
-    }
+//    private static final String[] ENTITY_PACKAGES_TO_SCAN = {"za.ac.nwu.as.domain.persistence"};
+//    private static final String PERSISTENCE_UNIT_NAME = "account.system.persistence";
+//
+//    @Value("${spring.datasource.url}")
+//    private String datasourseUrl;
+//
+//    @Value("${spring.datasource.username}")
+//    private String username;
+//
+//    @Value("${spring.datasource.password}")
+//    private String password;
+//
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+//        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+//        entityManagerFactoryBean.setDataSource(dataSource());
+//        entityManagerFactoryBean.setPackagesToScan(ENTITY_PACKAGES_TO_SCAN);
+//        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+//        entityManagerFactoryBean.setJpaProperties(buildJpaProperties());
+//        entityManagerFactoryBean.setPersistenceUnitName(PERSISTENCE_UNIT_NAME)
+//
+//        return entityManagerFactoryBean;
+//    }
+//
+//    @Bean
+//    public PlatformTransactionManager transactionManager() {
+//        JpaTransactionManager transactionManager = new JpaTransactionManager();
+//        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+//
+//        return transactionManager;
+//    }
+//
+//    @Bean
+//    public DataSource dataSource() {
+//        try {
+//            OracleDataSource dataSource = new OracleDataSource();
+//            dataSource.setUser(username);
+//            dataSource.setPassword(password);
+//            dataSource.setURL(datasourseUrl);
+//            dataSource.setImplicitCachingEnabled(true);
+//            return dataSource;
+//        } catch (SQLException e){
+//            //TODO: Log out that Repository Configured
+//            throw new RuntimeException("Unable to connect to the DB", e);
+//        }
+//    }
 
 }
 
