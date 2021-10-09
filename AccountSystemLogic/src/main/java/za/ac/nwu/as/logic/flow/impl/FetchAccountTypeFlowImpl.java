@@ -15,6 +15,6 @@ public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow {
     public List<AccountTypeDto> getAllAccountTypes() {
         List<AccountTypeDto> accountTypeDtos = new ArrayList<>();
         accountTypeDtos.add(new AccountTypeDto("MILES", "Miles", LocalDate.now()));
-        return null;
+        return accountTypeDtos;
     }
 }
