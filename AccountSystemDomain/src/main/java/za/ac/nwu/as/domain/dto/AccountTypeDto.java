@@ -1,9 +1,16 @@
 package za.ac.nwu.as.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.as.domain.persistence.AccountType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
+
+@ApiModel(value = "AccountType",
+    description = "DTO representing AccountType")
 
 public class AccountTypeDto implements Serializable {
 
@@ -29,6 +36,15 @@ public class AccountTypeDto implements Serializable {
         this.setMnemonic(accountType.getMnemonic());
     }
 
+    @ApiModelProperty(position = 1,
+        value = "AccountType Mnemonic",
+        name = "Mnemonic",
+        notes = "Uniquely identifies account type",
+        dataType = "java.lang.String",
+        example = "MILES",
+        required = true)
+
+
     public String getMnemonic() {
         return mnemonic;
     }
@@ -36,6 +52,15 @@ public class AccountTypeDto implements Serializable {
     public void setMnemonic(String mnemonic) {
         this.mnemonic = mnemonic;
     }
+
+    @ApiModelProperty(position = 2,
+            value = "AccountType Name",
+            name = "Name",
+            notes = "Uniquely identifies name of account type",
+            dataType = "java.lang.String",
+            example = "miles",
+            allowEmptyValue = false,
+            required = true)
 
     public String getAccountTypeName() {
         return accountTypeName;
@@ -45,12 +70,30 @@ public class AccountTypeDto implements Serializable {
         this.accountTypeName = accountTypeName;
     }
 
+    @ApiModelProperty(position = 3,
+            value = "AccountType Creation Date",
+            name = "CreationDate",
+            notes = "Uniquely identifies the creation date of account type",
+            dataType = "java.lang.String",
+            example = "2020-08-19",
+            allowEmptyValue = true,
+            required = false)
+
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @JsonIgnore
+    public AccountType getAccountType() {
+        return new AccountType(getMnemonic(), getAccountTypeName(), getCreationDate());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(mnemonic,accountTypeName, creationDate);
     }
 
     @Override
