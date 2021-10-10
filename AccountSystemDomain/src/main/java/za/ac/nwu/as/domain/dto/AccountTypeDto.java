@@ -59,7 +59,6 @@ public class AccountTypeDto implements Serializable {
             notes = "Uniquely identifies name of account type",
             dataType = "java.lang.String",
             example = "miles",
-            allowEmptyValue = false,
             required = true)
 
     public String getAccountTypeName() {
@@ -76,8 +75,7 @@ public class AccountTypeDto implements Serializable {
             notes = "Uniquely identifies the creation date of account type",
             dataType = "java.lang.String",
             example = "2020-08-19",
-            allowEmptyValue = true,
-            required = false)
+            allowEmptyValue = true)
 
     public LocalDate getCreationDate() {
         return creationDate;
@@ -85,6 +83,14 @@ public class AccountTypeDto implements Serializable {
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AccountTypeDto that = (AccountTypeDto) o;
+        return Objects.equals(mnemonic, that.mnemonic) && Objects.equals(accountTypeName, that.accountTypeName) && Objects.equals(creationDate, that.creationDate);
     }
 
     @JsonIgnore
