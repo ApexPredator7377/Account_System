@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @Transactional
-@Component("createAccountTypeFlowName")
+@Component("createAccountTransactionFlowName")
 public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
 
     private final AccountTypeTranslator accountTypeTranslator;

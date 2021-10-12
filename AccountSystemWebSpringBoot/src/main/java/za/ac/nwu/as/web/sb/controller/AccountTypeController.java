@@ -23,6 +23,7 @@ public class AccountTypeController{
 
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
     private final CreateAccountTypeFlow createAccountTypeFlow;
+    private AccountTypeDto accountType;
 
     @Autowired
     public AccountTypeController(FetchAccountTypeFlow fetchAccountTypeFlow,
@@ -44,12 +45,6 @@ public class AccountTypeController{
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-//    @PostMapping("")
-//    @ApiOperation(value = "Gets al the configured Account types", notes = "Returns a list of account types")
-//    @ApiResponses(value = {
-//            @ApiResponse()
-//    })
-
     @PostMapping("")
     @ApiOperation(value = "Creates a new Account type.", notes = "Creates a new Account type in DB")
     @ApiResponses(value = {
@@ -58,8 +53,7 @@ public class AccountTypeController{
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<AccountTypeDto>> create(
             @ApiParam(value = "Request body to create a new AccountType.", required = true)
-            //@ResponseBody
-                    AccountTypeDto accountType) {
+            @RequestBody AccountTypeDto accountType) {
         AccountTypeDto accountTypeResponse = createAccountTypeFlow.create(accountType);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountTypeResponse);
         return new ResponseEntity<>(response, HttpStatus.CREATED);

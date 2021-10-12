@@ -31,9 +31,10 @@ public class AccountTypeDto implements Serializable {
     }
 
     public AccountTypeDto(AccountType accountType) {
+        this.setMnemonic(accountType.getMnemonic());
         this.setAccountTypeName(accountType.getAccountTypeName());
         this.setCreationDate(accountType.getCreationDate());
-        this.setMnemonic(accountType.getMnemonic());
+
     }
 
     @ApiModelProperty(position = 1,
@@ -43,8 +44,6 @@ public class AccountTypeDto implements Serializable {
         dataType = "java.lang.String",
         example = "MILES",
         required = true)
-
-
     public String getMnemonic() {
         return mnemonic;
     }
@@ -60,7 +59,6 @@ public class AccountTypeDto implements Serializable {
             dataType = "java.lang.String",
             example = "miles",
             required = true)
-
     public String getAccountTypeName() {
         return accountTypeName;
     }
@@ -76,7 +74,6 @@ public class AccountTypeDto implements Serializable {
             dataType = "java.lang.String",
             example = "2020-08-19",
             allowEmptyValue = true)
-
     public LocalDate getCreationDate() {
         return creationDate;
     }
