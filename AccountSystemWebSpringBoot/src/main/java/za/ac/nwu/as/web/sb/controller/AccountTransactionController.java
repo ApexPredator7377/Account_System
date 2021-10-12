@@ -13,11 +13,12 @@ import za.ac.nwu.as.domain.dto.AccountTransactionDto;
 import za.ac.nwu.as.domain.service.GeneralResponse;
 import za.ac.nwu.as.logic.flow.CreateAccountTransactionFlow;
 import za.ac.nwu.as.logic.flow.FetchAccountTransactionFlow;
+import za.ac.nwu.as.logic.flow.FetchAccountTransactionFlow;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("account-type")
+@RequestMapping("account-transaction")
 public class AccountTransactionController {
 
     private final FetchAccountTransactionFlow fetchAccountTransactionFlow;

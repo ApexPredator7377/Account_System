@@ -1,6 +1,5 @@
 package za.ac.nwu.as.translator.impl;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountTransactionDto;
@@ -37,9 +36,9 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
     }
 
     @Override
-    public AccountTransactionDto create(AccountTransactionDto accountTypeDto) {
+    public AccountTransactionDto create(AccountTransactionDto accountTransactionDto) {
         try {
-            AccountTransaction accountTransaction = accountTransactionRepository.save(accountTypeDto.getAccountTransaction());
+            AccountTransaction accountTransaction = accountTransactionRepository.save(accountTransactionDto.getAccountTransaction());
             return new AccountTransactionDto(accountTransaction);
         } catch (Exception e) {
           throw new RuntimeException("Unable to save to the DB",e);
